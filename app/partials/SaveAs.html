@@ -1,0 +1,13 @@
+<div class="modal-content ok">
+    <h1>Save As</h1>
+    <i-scroll class="selection-list">
+        <ul>
+            <li ng-repeat="a in arrangementList" ng-click="onItemClick(a)" ng-class="{selected:title==a}">{{a}}</li>
+        </ul>
+    </i-scroll>
+    <input ng-model="title" />
+    <a href="#" class="button ok" ng-click="onSaveClick($event)">Save</a>
+    <a href="#" class="button cancel">Cancel</a>
+</div>
+
+

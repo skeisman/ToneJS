@@ -1,0 +1,175 @@
+{
+    "success":true,
+    "data":[
+    {
+        "name":"Drums I",
+        "type": "wavTable",
+        "data": [
+            {"note": 36,"url": "data/drums1/TTloBrushkit.mp3"},
+            {"note": 38,"url": "data/drums1/TThi2Brushkit.mp3"},
+            {"note": 40,"url": "data/drums1/TThiBrushkit.mp3"},
+            {"note": 42,"url": "data/drums1/CONGA1.mp3"},
+            {"note": 44,"url": "data/drums1/CONGA2.mp3"},
+            {"note": 48,"url": "data/drums1/bdBrushkit.mp3"},
+            {"note": 50,"url": "data/drums1/SD6Brushkit.mp3"},
+            {"note": 51,"url": "data/drums1/SD6Brushkit.mp3"},
+            {"note": 52,"url": "data/drums1/CLAP1.mp3"},
+            {"note": 56,"url": "data/drums1/HIHAT01.mp3"},
+            {"note": 57,"url": "data/drums1/HHosBrushkit.mp3"},
+            {"note": 58,"url": "data/drums1/HHo2Brushkit.mp3"},
+            {"note": 59,"url": "data/drums1/TAMB.mp3"},
+            {"note": 60,"url": "data/drums1/Cy1Brushkit.mp3"},
+            {"note": 62,"url": "data/drums1/Cy2Brushkit.mp3"},
+            {"note": 70,"url": "data/drums1/CYMBAL03.mp3"},
+            {"note": 72,"url": "data/drums1/CYMBAL08.mp3"}
+        ]
+    },
+    {
+        "name":"Slap Bass",
+        "type": "wavTable",
+        "data": [
+            {"note": 28,"url": "data/bass-slap/28.mp3"},
+            {"note": 40,"url": "data/bass-slap/40.mp3"},
+            {"note": 52,"url": "data/bass-slap/52.mp3"}
+            ]
+    },
+
+
+        {
+            "name":"Upright Bass",
+            "type": "wavTable",
+            "data": [
+                {"note": 28,"url": "data/bass-upright/28.mp3"},
+                {"note": 33,"url": "data/bass-upright/33.mp3"},
+                {"note": 40,"url": "data/bass-upright/40.mp3"},
+                {"note": 45,"url": "data/bass-upright/45.mp3"},
+                {"note": 48,"url": "data/bass-upright/48.mp3"},
+                {"note": 53,"url": "data/bass-upright/53.mp3"}
+            ]
+        },
+
+        {
+            "name":"Brass",
+            "type": "wavTable",
+            "data": [
+                {"note": 12,"url": "data/brass/12.mp3"},
+                {"note": 18,"url": "data/brass/18.mp3"},
+                {"note": 24,"url": "data/brass/24.mp3"},
+                {"note": 30,"url": "data/brass/30.mp3"},
+                {"note": 36,"url": "data/brass/36.mp3"},
+                {"note": 42,"url": "data/brass/42.mp3"},
+                {"note": 48,"url": "data/brass/48.mp3"},
+                {"note": 54,"url": "data/brass/54.mp3"},
+                {"note": 60,"url": "data/brass/60.mp3"}
+            ]
+        },
+        {
+            "name":"Cello",
+            "type": "wavTable",
+            "data": [
+                {"note": 24,"url": "data/cello/12.mp3"},
+                {"note": 30,"url": "data/cello/18.mp3"},
+                {"note": 36,"url": "data/cello/24.mp3"},
+                {"note": 42,"url": "data/cello/30.mp3"},
+                {"note": 48,"url": "data/cello/36.mp3"},
+                {"note": 54,"url": "data/cello/42.mp3"},
+                {"note": 60,"url": "data/cello/48.mp3"},
+                {"note": 66,"url": "data/cello/54.mp3"},
+                {"note": 72,"url": "data/cello/60.mp3"}
+            ]
+        },
+        {
+            "name":"Flute",
+            "type": "wavTable",
+            "data": [
+                {"note": 12,"url": "data/flute/12.mp3"},
+                {"note": 18,"url": "data/flute/18.mp3"},
+                {"note": 24,"url": "data/flute/24.mp3"},
+                {"note": 30,"url": "data/flute/30.mp3"},
+                {"note": 36,"url": "data/flute/36.mp3"},
+                {"note": 42,"url": "data/flute/42.mp3"},
+                {"note": 48,"url": "data/flute/48.mp3"},
+                {"note": 54,"url": "data/flute/54.mp3"},
+                {"note": 60,"url": "data/flute/60.mp3"}
+            ]
+        },
+        {
+            "name":"Strings",
+            "type": "wavTable",
+            "data": [
+                {"note": 12,"url": "data/strings/12.mp3"},
+                {"note": 18,"url": "data/strings/18.mp3"},
+                {"note": 24,"url": "data/strings/24.mp3"},
+                {"note": 30,"url": "data/strings/30.mp3"},
+                {"note": 36,"url": "data/strings/36.mp3"},
+                {"note": 42,"url": "data/strings/42.mp3"},
+                {"note": 48,"url": "data/strings/48.mp3"},
+                {"note": 54,"url": "data/strings/54.mp3"},
+                {"note": 60,"url": "data/strings/60.mp3"}
+            ]
+        },
+        {
+            "name":"Piano",
+            "type": "wavTable",
+            "data": [
+                {"note": 12,"url": "data/piano/12.mp3"},
+                {"note": 18,"url": "data/piano/18.mp3"},
+                {"note": 24,"url": "data/piano/24.mp3"},
+                {"note": 30,"url": "data/piano/30.mp3"},
+                {"note": 36,"url": "data/piano/36.mp3"},
+                {"note": 42,"url": "data/piano/42.mp3"},
+                {"note": 48,"url": "data/piano/48.mp3"},
+                {"note": 54,"url": "data/piano/54.mp3"},
+                {"note": 60,"url": "data/piano/60.mp3"},
+                {"note": 66,"url": "data/piano/66.mp3"},
+                {"note": 72,"url": "data/piano/72.mp3"},
+                {"note": 78,"url": "data/piano/78.mp3"},
+                {"note": 84,"url": "data/piano/84.mp3"}
+            ]
+        },
+
+        {
+            "name":"Choir I",
+            "type": "wavTable",
+            "data": [
+                {"note": 37,"url": "data/choir1/37.mp3"},
+                {"note": 40,"url": "data/choir1/40.mp3"},
+                {"note": 46,"url": "data/choir1/46.mp3"},
+                {"note": 53,"url": "data/choir1/53.mp3"}
+
+            ]
+        },
+        {
+            "name":"Choir II",
+            "type": "wavTable",
+            "data": [
+                {"note": 43,"url": "data/choir2/43.mp3"},
+                {"note": 45,"url": "data/choir2/45.mp3"},
+                {"note": 48,"url": "data/choir2/48.mp3"},
+                {"note": 53,"url": "data/choir2/53.mp3"}
+
+            ]
+        },
+        {
+            "name":"Synth I",
+            "type": "wavTable",
+            "data": [
+                {"note": 36,"url": "data/synth1/36.mp3"},
+                {"note": 48,"url": "data/synth1/48.mp3"},
+                {"note": 60,"url": "data/synth1/60.mp3"}
+            ]
+        },
+        {
+            "name":"Sitar",
+            "type": "wavTable",
+            "data": [
+                {"note": 24,"url": "data/sitar/24.mp3"},
+                {"note": 36,"url": "data/sitar/36.mp3"},
+                {"note": 48,"url": "data/sitar/48.mp3"},
+                {"note": 55,"url": "data/sitar/55.mp3"},
+                {"note": 67,"url": "data/sitar/67.mp3"}
+            ]
+        }
+
+    ]
+}

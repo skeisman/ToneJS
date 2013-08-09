@@ -1,0 +1,9 @@
+<div class="modal-content ok">
+    <h1>Randomize Note Volume</h1>
+    <label>Amount:</label>
+   <select ng-model="amount" ng-options="n.value as n.text for n in amountValues"></select>
+    <a href="#" class="button cancel">Cancel</a>
+    <a href="#" class="button ok" ng-click="okClick()">OK</a>
+</div>
+
+

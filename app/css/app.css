@@ -1,0 +1,606 @@
+* {
+  border-collapse: collapse;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+html,
+body {
+  background: #ffffff;
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
+  font-family: sans-serif;
+  line-height: 1.4em;
+  color: #000000;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+a {
+  color: #000000;
+}
+ul,
+li {
+  display: block;
+}
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+select,
+input {
+  -webkit-appearance: none;
+  border-radius: 0;
+  padding: 0.2em 0.5em ;
+  background-color: transparent;
+  border: 1px solid #cccccc;
+}
+input[type=checkbox] {
+  -webkit-appearance: checkbox;
+}
+i-scroll {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.menu-bar {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 30px;
+  background: #ffffff;
+}
+.menu-bar a {
+  display: block;
+  font-weight: bold;
+  margin: 7px 20px;
+  float: left;
+  cursor: pointer;
+}
+.playback {
+  display: block;
+  position: absolute;
+  top: 30px;
+  width: 100%;
+  height: 90px;
+  background: #f6f6f6;
+  border-top: 1px solid #cccccc;
+}
+.playback .button-play-pause {
+  display: block;
+  cursor: pointer;
+  position: absolute;
+  left: 20px;
+  top: 5px;
+  width: 60px;
+  bottom: 40px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAbCAYAAABiFp9rAAAABGdBTUEAALGOfPtRkwAAACBjSFJNAACHDwAAjA8AAP1SAACBQAAAfXkAAOmLAAA85QAAGcxzPIV3AAAKL2lDQ1BJQ0MgcHJvZmlsZQAASMedlndUVNcWh8+9d3qhzTACUobeu8AA0nuTXkVhmBlgKAMOMzSxIaICEUVEmiJIUMSA0VAkVkSxEBRUsAckCCgxGEVULG9G1ouurLz38vL746xv7bP3ufvsvc9aFwCSpy+XlwZLAZDKE/CDPJzpEZFRdOwAgAEeYIApAExWRrpfsHsIEMnLzYWeIXICXwQB8HpYvAJw09AzgE4H/5+kWel8geiYABGbszkZLBEXiDglS5Auts+KmBqXLGYYJWa+KEERy4k5YZENPvsssqOY2ak8tojFOaezU9li7hXxtkwhR8SIr4gLM7mcLBHfErFGijCVK+I34thUDjMDABRJbBdwWIkiNhExiR8S5CLi5QDgSAlfcdxXLOBkC8SXcklLz+FzExIFdB2WLt3U2ppB9+RkpXAEAsMAJiuZyWfTXdJS05m8HAAW7/xZMuLa0kVFtjS1trQ0NDMy/apQ/3Xzb0rc20V6Gfi5ZxCt/4vtr/zSGgBgzIlqs/OLLa4KgM4tAMjd+2LTOACApKhvHde/ug9NPC+JAkG6jbFxVlaWEZfDMhIX9A/9T4e/oa++ZyQ+7o/y0F058UxhioAurhsrLSVNyKdnpDNZHLrhn4f4Hwf+dR4GQZx4Dp/DE0WEiaaMy0sQtZvH5gq4aTw6l/efmvgPw/6kxbkWidL4EVBjjIDUdSpAfu0HKAoRINH7xV3/o2+++DAgfnnhKpOLc//vN/1nwaXiJYOb8DnOJSiEzhLyMxf3xM8SoAEBSAIqkAfKQB3oAENgBqyALXAEbsAb+IMQEAlWAxZIBKmAD7JAHtgECkEx2An2gGpQBxpBM2gFx0EnOAXOg0vgGrgBboP7YBRMgGdgFrwGCxAEYSEyRIHkIRVIE9KHzCAGZA+5Qb5QEBQJxUIJEA8SQnnQZqgYKoOqoXqoGfoeOgmdh65Ag9BdaAyahn6H3sEITIKpsBKsBRvDDNgJ9oFD4FVwArwGzoUL4B1wJdwAH4U74PPwNfg2PAo/g+cQgBARGqKKGCIMxAXxR6KQeISPrEeKkAqkAWlFupE+5CYyiswgb1EYFAVFRxmibFGeqFAUC7UGtR5VgqpGHUZ1oHpRN1FjqFnURzQZrYjWR9ugvdAR6AR0FroQXYFuQrejL6JvoyfQrzEYDA2jjbHCeGIiMUmYtZgSzD5MG+YcZhAzjpnDYrHyWH2sHdYfy8QKsIXYKuxR7FnsEHYC+wZHxKngzHDuuCgcD5ePq8AdwZ3BDeEmcQt4Kbwm3gbvj2fjc/Cl+EZ8N/46fgK/QJAmaBPsCCGEJMImQiWhlXCR8IDwkkgkqhGtiYFELnEjsZJ4jHiZOEZ8S5Ih6ZFcSNEkIWkH6RDpHOku6SWZTNYiO5KjyALyDnIz+QL5EfmNBEXCSMJLgi2xQaJGokNiSOK5JF5SU9JJcrVkrmSF5AnJ65IzUngpLSkXKabUeqkaqZNSI1Jz0hRpU2l/6VTpEukj0lekp2SwMloybjJsmQKZgzIXZMYpCEWd4kJhUTZTGikXKRNUDFWb6kVNohZTv6MOUGdlZWSXyYbJZsvWyJ6WHaUhNC2aFy2FVko7ThumvVuitMRpCWfJ9iWtS4aWzMstlXOU48gVybXJ3ZZ7J0+Xd5NPlt8l3yn/UAGloKcQqJClsF/hosLMUupS26WspUVLjy+9pwgr6ikGKa5VPKjYrzinpKzkoZSuVKV0QWlGmabsqJykXK58RnlahaJir8JVKVc5q/KULkt3oqfQK+m99FlVRVVPVaFqveqA6oKatlqoWr5am9pDdYI6Qz1evVy9R31WQ0XDTyNPo0XjniZek6GZqLlXs09zXktbK1xrq1an1pS2nLaXdq52i/YDHbKOg84anQadW7oYXYZusu4+3Rt6sJ6FXqJejd51fVjfUp+rv09/0ABtYG3AM2gwGDEkGToZZhq2GI4Z0Yx8jfKNOo2eG2sYRxnvMu4z/mhiYZJi0mhy31TG1Ns037Tb9HczPTOWWY3ZLXOyubv5BvMu8xfL9Jdxlu1fdseCYuFnsdWix+KDpZUl37LVctpKwyrWqtZqhEFlBDBKGJet0dbO1husT1m/tbG0Edgct/nN1tA22faI7dRy7eWc5Y3Lx+3U7Jh29Xaj9nT7WPsD9qMOqg5MhwaHx47qjmzHJsdJJ12nJKejTs+dTZz5zu3O8y42Lutczrkirh6uRa4DbjJuoW7Vbo/c1dwT3FvcZz0sPNZ6nPNEe/p47vIc8VLyYnk1e816W3mv8+71IfkE+1T7PPbV8+X7dvvBft5+u/0erNBcwVvR6Q/8vfx3+z8M0A5YE/BjICYwILAm8EmQaVBeUF8wJTgm+Ejw6xDnkNKQ+6E6ocLQnjDJsOiw5rD5cNfwsvDRCOOIdRHXIhUiuZFdUdiosKimqLmVbiv3rJyItogujB5epb0qe9WV1QqrU1afjpGMYcaciEXHhsceiX3P9Gc2MOfivOJq42ZZLqy9rGdsR3Y5e5pjxynjTMbbxZfFTyXYJexOmE50SKxInOG6cKu5L5I8k+qS5pP9kw8lf0oJT2lLxaXGpp7kyfCSeb1pymnZaYPp+umF6aNrbNbsWTPL9+E3ZUAZqzK6BFTRz1S/UEe4RTiWaZ9Zk/kmKyzrRLZ0Ni+7P0cvZ3vOZK577rdrUWtZa3vyVPM25Y2tc1pXvx5aH7e+Z4P6hoINExs9Nh7eRNiUvOmnfJP8svxXm8M3dxcoFWwsGN/isaWlUKKQXziy1XZr3TbUNu62ge3m26u2fyxiF10tNimuKH5fwiq5+o3pN5XffNoRv2Og1LJ0/07MTt7O4V0Ouw6XSZfllo3v9tvdUU4vLyp/tSdmz5WKZRV1ewl7hXtHK30ru6o0qnZWva9OrL5d41zTVqtYu712fh9739B+x/2tdUp1xXXvDnAP3Kn3qO9o0GqoOIg5mHnwSWNYY9+3jG+bmxSaips+HOIdGj0cdLi32aq5+YjikdIWuEXYMn00+uiN71y/62o1bK1vo7UVHwPHhMeefh/7/fBxn+M9JxgnWn/Q/KG2ndJe1AF15HTMdiZ2jnZFdg2e9D7Z023b3f6j0Y+HTqmeqjkte7r0DOFMwZlPZ3PPzp1LPzdzPuH8eE9Mz/0LERdu9Qb2Dlz0uXj5kvulC31OfWcv210+dcXmysmrjKud1yyvdfRb9Lf/ZPFT+4DlQMd1q+tdN6xvdA8uHzwz5DB0/qbrzUu3vG5du73i9uBw6PCdkeiR0TvsO1N3U+6+uJd5b+H+xgfoB0UPpR5WPFJ81PCz7s9to5ajp8dcx/ofBz++P84af/ZLxi/vJwqekJ9UTKpMNk+ZTZ2adp++8XTl04ln6c8WZgp/lf619rnO8x9+c/ytfzZiduIF/8Wn30teyr889GrZq565gLlHr1NfL8wXvZF/c/gt423fu/B3kwtZ77HvKz/ofuj+6PPxwafUT5/+BQOY8/yUGUl9AAAACXBIWXMAAAsSAAALEgHS3X78AAAAB3RJTUUH3AoNBgkePrJMEAAAABp0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuMTAw9HKhAAABDUlEQVRIS83WPQrCQBAF4IAgGISAIFgJth7AG3gGwVawtfIAgjewEgQrKyvBA+QAOYBgaysIVlbrG8lI0MT9mwSLx0Ig+bILM7OBUiqoIm8kDMMxckQmSE0af0H4cB25ISrNCetIEmMoyiCM0ZogQwlQBzEaAxz4gKYQgweAfRfQFmJwC7BnA7pCBD6QFdI2AX0g3t0d2BKJfoESEINXYHOkkQdKQgxegE0/i74MiMFztujLhBhc01FWAcVVQFRvnTKhrw4ifXSFPVEK0nZ5X8h4brlCVJRWk9gWojYzK2ozEr2OGudC1zh9IB4FLZNRYAI1c+4MGzzr+gL8fva6tUuxveu41u5I6q//AnoC5MRdC/gQ1AgAAAAASUVORK5CYII=);
+}
+.playback .playback-properties {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 220px;
+  height: 100%;
+}
+.playback .playback-properties select {
+  width: 40px;
+  padding: 1px 5px;
+  background-color: #FFF;
+}
+.playback .playback-properties input[type=checkbox] {
+  margin: 0px 5px;
+}
+.playback .playback-properties .property {
+  width: 50%;
+  float: left;
+  margin: 5px 0;
+}
+.playback .button-play-pause.paused {
+  background-image: url(data:image/png;base64,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);
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.playback .sequence-border {
+  border: 1px solid #cccccc;
+  position: absolute;
+  left: 90px;
+  right: 250px;
+  top: 10px;
+  height: 35px;
+}
+.playback sequence-editor {
+  overflow: hidden;
+  position: absolute;
+  left: 90px;
+  right: 250px;
+  top: 10px;
+  bottom: 10px;
+}
+.playback sequence-editor .wrapper {
+  position: absolute;
+  -webkit-transition: -webkit-transform 0.5s;
+  height: 100%;
+}
+.playback sequence-editor .item {
+  position: absolute;
+  text-align: center;
+  top: 0px;
+  height: 35px;
+  padding-top: 10px;
+  border-right: 1px solid #cccccc;
+  cursor: pointer;
+}
+.playback sequence-editor .item:first-child {
+  border-left: 1px solid #cccccc;
+}
+.playback sequence-editor .editor {
+  position: absolute;
+  top: 0px;
+  height: 35px;
+  background-color: #FFF;
+  padding: 0px;
+  z-index: 2;
+  -webkit-transition: left 0.3s;
+}
+.playback sequence-editor .editor select {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0 1em;
+}
+.playback sequence-editor .editor .menu {
+  position: absolute;
+  text-align: center;
+  top: 44px;
+  width: 180px;
+  left: 50%;
+  margin-left: -70px;
+}
+.playback sequence-editor .editor .menu > a {
+  display: inline-block;
+  padding: 5px 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.pattern {
+  position: absolute;
+  top: 120px;
+  width: 100%;
+  bottom: 0px;
+  background: #eeeeee;
+  border: 1px solid #cccccc;
+}
+.pattern .pattern-length-editor {
+  display: block;
+  position: absolute;
+  overflow: hidden;
+  left: 0;
+  top: 0px;
+  height: 40px;
+  width: 160px;
+}
+.pattern .pattern-length-editor label {
+  display: block;
+  position: absolute;
+  height: 100%;
+  width: 40%;
+  top: 0;
+  left: 0;
+  padding: 5px 10px;
+}
+.pattern .pattern-length-editor .select-wrapper {
+  display: block;
+  position: absolute;
+  height: 100%;
+  width: 60%;
+  top: 0;
+  right: 0;
+  padding: 5px 10px;
+}
+.pattern .pattern-length-editor select {
+  width: 100%;
+  height: 100%;
+}
+.pattern .channel-labels {
+  display: block;
+  position: absolute;
+  overflow: hidden;
+  left: 0;
+  top: 40px;
+  bottom: 0px;
+  width: 160px;
+  border-top: 1px solid #cccccc;
+}
+.pattern .channel-labels .wrapper {
+  position: absolute;
+  left: 0px;
+  width: 100%;
+}
+.pattern .channel-labels .channel-label {
+  display: block;
+  border-bottom: 1px solid #cccccc;
+  background-color: #f6f6f6;
+  color: #666;
+  position: relative;
+}
+.pattern .channel-labels .channel-label.selected {
+  background-color: #FFF;
+}
+.pattern .channel-labels .channel-label.add {
+  font-size: 24px;
+  text-align: center;
+  padding: 10px;
+  background-color: #fff;
+}
+.pattern .channel-labels .instrument {
+  position: absolute;
+  display: table;
+  top: 0;
+  left: 0;
+  width: 65%;
+  height: 100%;
+}
+.pattern .channel-labels .instrument > div {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: left;
+  font-weight: normal;
+  font-size: 14px;
+  padding-left: 10px;
+  color: #000;
+}
+.pattern .channel-labels .vol {
+  position: absolute;
+  left: 65%;
+  width: 35%;
+  top: 0;
+  padding: 3px 3px 3px 0;
+  text-align: right;
+}
+.pattern .channel-labels .pan {
+  position: absolute;
+  left: 65%;
+  width: 35%;
+  bottom: 0;
+  padding: 0 3px 3px 0;
+  text-align: right;
+}
+.pattern .position-labels {
+  display: block;
+  position: absolute;
+  overflow: hidden;
+  left: 160px;
+  top: 0px;
+  height: 40px;
+  right: 26px;
+  border-left: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
+}
+.pattern .position-labels .wrapper {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.pattern .position-labels .label {
+  position: absolute;
+  top: 0px;
+  text-align: center;
+  padding-top: 14px;
+  border-right: 1px solid #cccccc;
+  cursor: default;
+  background-color: #EEE;
+}
+.pattern .position-labels .label.highlight {
+  background: #f6f6f6;
+}
+.pattern .position-labels .label.playhead {
+  background: #ffffff;
+}
+.pattern grid {
+  display: block;
+  position: absolute;
+  overflow: hidden;
+  left: 160px;
+  top: 40px;
+  bottom: 26px;
+  right: 26px;
+  border: 1px solid #cccccc;
+  z-index: 2;
+}
+.pattern .playhead {
+  position: absolute;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAoCAIAAAAOgl99AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAadEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My41LjEwMPRyoQAAAEdJREFUWEftzjkRwEAAxLDwx7ac8tQxgCukGfe+7jNss/JjpVgpVoqVYqVYKVaKlWKlWClWipVipVgpVoqVYqVYKd/K2xG2B4bbSN/0C+l9AAAAAElFTkSuQmCC);
+  background-repeat: repeat-y;
+  background-color: #FFF;
+  pointer-events: none;
+  top: 0;
+}
+.pattern trigger-selection-editor {
+  position: absolute;
+  background-color: rgba(255, 255, 0, 0.3);
+  border: 4px dashed #666;
+  z-index: 10;
+  display: block;
+}
+.pattern .content {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.pattern .grid-background {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAoCAIAAAAOgl99AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAadEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My41LjEwMPRyoQAAAEhJREFUWEftzjERgEAAxED8azstaABqIuCL3Zn0ue4zbLPyY6VYKVaKlWKlWClWipVipVgpVoqVYqVYKVaKlWKlWCnfytsRtgfqn+sgrQJZZAAAAABJRU5ErkJggg==);
+  background-repeat: repeat;
+  overflow: hidden;
+  position: absolute;
+}
+.pattern .h1,
+.pattern .h2 {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background-repeat: repeat-y;
+}
+.pattern .h1 {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAoCAIAAAAOgl99AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAadEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My41LjEwMPRyoQAAAE1JREFUWEftzjEVgDAUBEH8a/sWsBALAWpWQIq5N9fvda99gpmR8iOlSClSipQipUgpUoqUIqVIKVKKlCKlSClSipQipUgpX8r7IzbzAAGJ6yBDsYoUAAAAAElFTkSuQmCC);
+}
+.pattern .h2 {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAoCAIAAAAOgl99AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAadEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2My41LjEwMPRyoQAAAElJREFUWEftzkENgEAAxED8y1obyMAA4U0F3GOaEdBr93OEzcqflWKlWClWipVipVgpVoqVYqVYKVaKlWKlWClWipVipXwrh7S9TElTfbYldM4AAAAASUVORK5CYII=);
+}
+.pattern .triggers {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.pattern .grid-trigger {
+  position: absolute;
+  padding-top: 12px;
+  font-size: 11px;
+  text-align: center;
+  cursor: pointer;
+  color: #666;
+}
+.selection-menu {
+  position: absolute;
+  width: 54px;
+  z-index: 5;
+  margin-left: -56px;
+  background: #666;
+}
+.selection-menu a {
+  display: block;
+  padding: 5px 0;
+  text-align: center;
+  color: #FFF;
+  position: relative;
+  cursor: pointer;
+}
+.selection-menu a:hover {
+  background-color: #777;
+}
+.selection-menu a select {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: none;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+.modal-window {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1001;
+  color: #DDD;
+}
+.modal-window a {
+  color: #FFF;
+}
+.modal-window input,
+.modal-window textarea,
+.modal-window select {
+  display: block;
+  margin-bottom: 1em;
+  width: 100%;
+  background-color: transparent;
+  color: #DDD;
+}
+.modal-window option {
+  color: #666;
+}
+.modal-window label {
+  display: block;
+  margin-bottom: 0.2em;
+  font-size: 12px;
+}
+.modal-window .modal-bkg {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #000000;
+  opacity: 0.5;
+  z-index: 1002;
+}
+.modal-window .auto-center {
+  width: 100%;
+  height: 100%;
+  display: table;
+}
+.modal-window ng-view {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+.modal-window .modal-content {
+  background: #000000;
+  width: 60%;
+  display: inline-block;
+  max-height: 90%;
+  text-align: left;
+  padding: 20px 20px 30px 20px;
+  position: relative;
+  z-index: 1003;
+}
+.modal-window .modal-content.ok {
+  padding-bottom: 60px;
+}
+.modal-window .modal-content h1 {
+  font-size: 30px;
+  font-weight: lighter;
+  margin-bottom: 1em;
+}
+.modal-window .modal-content h2 {
+  font-size: 18px;
+  font-weight: normal;
+  margin: 0.5em 0;
+  clear: both;
+}
+.modal-window .modal-content .col_2 {
+  width: 50%;
+  float: left;
+  padding: 0 10px;
+  margin-bottom: 5px;
+}
+.modal-window .modal-content .col_3 {
+  width: 33%;
+  float: left;
+  padding: 0 10px;
+  margin-bottom: 5px;
+}
+.modal-window .modal-content .col_4 {
+  width: 25%;
+  float: left;
+  padding: 0 10px;
+}
+.modal-window .modal-content .button {
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.modal-window .modal-content .button.disabled {
+  opacity: 0.5;
+}
+.modal-window .modal-content .button.border {
+  padding: 5px 10px;
+  display: block;
+  background-color: #85f2ff;
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 0.5em;
+}
+.modal-window .modal-content .button.border:hover {
+  color: #000;
+}
+.modal-window .modal-content .button.cancel {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+.modal-window .modal-content .button.ok {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+.modal-window .modal-content .selection-list {
+  display: block;
+  width: 100%;
+  height: 220px;
+  background-color: #333;
+  border: 1px solid #999;
+  color: #DDD;
+  margin-bottom: 5px;
+}
+.modal-window .modal-content .selection-list li {
+  display: block;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.modal-window .modal-content .selection-list li.selected {
+  background-color: #000;
+}
+scrollbar {
+  display: block;
+  border: 1px solid #AAA;
+}
+scrollbar.v-scroll {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  width: 26px;
+  background-color: #CCC;
+  bottom: 26px;
+}
+scrollbar.h-scroll {
+  position: absolute;
+  right: 26px;
+  left: 160px;
+  background-color: #CCC;
+  bottom: 0px;
+  height: 26px;
+}
+scrollbar.vertical .handle {
+  left: 5px;
+  right: 5px;
+  top: 5px;
+  height: 60px;
+}
+scrollbar.horizontal .handle {
+  top: 5px;
+  bottom: 5px;
+  left: 5px;
+  width: 60px;
+}
+scrollbar .wrapper {
+  width: 100%;
+  height: 100%;
+}
+scrollbar .handle {
+  position: absolute;
+  background-color: #fff;
+  cursor: pointer;
+}
+.splash-screen {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.splash-screen .bkg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.8;
+}
+.splash-screen table {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+.splash-screen .content {
+  display: inline-block;
+  width: 50%;
+  min-width: 600px;
+  background-color: #F6F6F6;
+  padding: 20px;
+}
+.splash-screen h1,
+.splash-screen h2,
+.splash-screen h3,
+.splash-screen p {
+  margin-bottom: 0.5em;
+}

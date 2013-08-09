@@ -1,0 +1,17 @@
+<div class="modal-content ok">
+    <h1>{{title}}</h1>
+
+    <label>Instrument</label>
+    <select ng-model="channelSource" ng-options="s.name for s in sources" ></select>
+    <label>Volume</label>
+    <select ng-model="vol" ng-options="vol.value as vol.text for vol in volValues" >
+    </select>
+    <label>Panning</label>
+    <select ng-model="pan" ng-options="pan.value as pan.text for pan in panValues" >
+    </select>
+
+    <a href="#" class="button ok" ng-click="okClick()">OK</a>
+    <a href="#" class="button cancel" ng-click="cancelClick()">Cancel</a>
+</div>
+
+

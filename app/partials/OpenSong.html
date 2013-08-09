@@ -1,0 +1,12 @@
+<div class="modal-content ok">
+    <h1>Open</h1>
+    <i-scroll class="selection-list">
+        <ul>
+            <li ng-repeat="a in arrangementList" ng-click="onItemClick(a)" ng-class="{selected:title==a}">{{a}}</li>
+        </ul>
+    </i-scroll>
+    <a href="#" class="button ok" ng-click="onOpenClick($event)">Open</a>
+    <a href="#" class="button cancel">Cancel</a>
+</div>
+
+

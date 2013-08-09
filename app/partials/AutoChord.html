@@ -1,0 +1,39 @@
+<div class="modal-content ok">
+    <h1>Auto Chord</h1>
+    <div class="col_3">
+        <label>Root:</label>
+        <select ng-model="state.root" ng-options="n.value as n.text for n in rootValues"></select>
+    </div>
+    <div class="col_3">
+        <label>Scale:</label>
+        <select ng-model="state.scale" ng-options="n.value as n.text for n in scaleValues"></select>
+    </div>
+    <div class="col_3">
+        <label>Chords:</label>
+        <select ng-model="state.chord" ng-options="n.notes as n.label for n in chordValues"></select>
+    </div>
+
+    <div class="col_3">
+        <label>Octave Start:</label>
+        <select ng-model="state.octaveStart" ng-options="n for n in octaveValues"></select>
+    </div>
+    <div class="col_3">
+        <label>Octave End:</label>
+        <select ng-model="state.octaveEnd" ng-options="n for n in octaveValues"></select>
+    </div>
+    <div class="col_3">
+        <label>Fill Type:</label>
+        <select ng-model="state.fill" ng-options="n for n in fillValues"></select>
+    </div>
+    <div class="col_3">
+    </div>
+    <div class="col_3">
+    </div>
+    <div class="col_3">
+        <a class="button border" ng-click="onPreviewClick()">Preview</a>
+    </div>
+    <a href="#" class="button cancel">Cancel</a>
+    <a href="#" class="button ok" ng-click="okClick()">OK</a>
+</div>
+
+

@@ -1,0 +1,147 @@
+@import 'variables.less';
+
+.modal-window{
+  position: absolute;
+  width:100%;
+  height:100%;
+  z-index: 1001;
+  color:#DDD;
+  a{
+    color:#FFF;
+  }
+
+  input, textarea, select{
+    display:block;
+    margin-bottom: 1em;
+    width:100%;
+    background-color: transparent;
+    color:#DDD;
+  }
+  option{
+    color:#666;
+  }
+
+  label{
+    display:block;
+    margin-bottom: 0.2em;
+    font-size:12px;
+  }
+
+  .modal-bkg{
+    position:absolute;
+    display:block;
+    width:100%;
+    height:100%;
+    background:@modal-color;
+    opacity:0.5;
+    z-index: 1002;
+  }
+
+  .auto-center{
+    width:100%;
+    height:100%;
+    display:table;
+
+  }
+  ng-view{
+    display:table-cell;
+    vertical-align: middle;
+    text-align: center;
+
+  }
+  .modal-content{
+    background: @modal-color;
+    width:60%;
+    display:inline-block;
+    max-height: 90%;
+    text-align: left;
+    padding:20px 20px 30px 20px;
+    position:relative;
+    z-index: 1003;
+    &.ok{
+      padding-bottom:60px;
+    }
+    h1{
+      font-size: 30px;
+      font-weight:lighter;
+      margin-bottom: 1em;
+    }
+    h2{
+      font-size: 18px;
+      font-weight:normal;
+      margin:0.5em 0;
+      clear:both;
+    }
+
+    .col_2{
+      width:50%;
+      float:left;
+      padding:0 10px;
+      margin-bottom: 5px;
+    }
+    .col_3{
+      width:33%;
+      float:left;
+      padding:0 10px;
+      margin-bottom: 5px;
+    }
+    .col_4{
+      width:25%;
+      float:left;
+      padding:0 10px;
+    }
+
+    .button{
+      font-size:16px;
+      font-weight:bold;
+      cursor: pointer;
+      &.disabled{
+        opacity: 0.5;
+      }
+
+      &.border{
+        padding:5px 10px;
+        display: block;
+        background-color: @button-color;
+        font-size:12px;
+        color:#666;
+        margin-bottom: 0.5em;
+      }
+
+      &.border:hover{
+        color:#000;
+      }
+
+      &.cancel{
+        position:absolute;
+        bottom:20px;
+        left:20px;
+      }
+      &.ok{
+        position:absolute;
+        bottom:20px;
+        right:20px;
+      }
+    }
+
+    .selection-list{
+      display:block;
+      width:100%;
+      height:220px;
+      background-color:#333;
+      border:1px solid #999;
+      color:#DDD;
+      margin-bottom: 5px;
+      li{
+        display:block;
+        padding:5px 10px;
+        cursor:pointer;
+        &.selected{
+          background-color: #000;
+        }
+      }
+    }
+
+  }
+
+}

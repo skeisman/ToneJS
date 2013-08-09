@@ -1,0 +1,46 @@
+scrollbar{
+  display:block;
+  border:1px solid #AAA;
+  &.v-scroll{
+    position:absolute;
+    top:40px;
+    right:0;
+    width:26px;
+    background-color: #CCC;
+    bottom:26px;
+  }
+  &.h-scroll{
+    position:absolute;
+    right:26px;
+    left:160px;
+    background-color: #CCC;
+    bottom:0px;
+    height:26px;
+  }
+
+  &.vertical{
+    .handle{
+      left:5px;
+      right:5px;
+      top:5px;
+      height:60px;
+    }
+  }
+  &.horizontal{
+    .handle{
+      top:5px;
+      bottom:5px;
+      left:5px;
+      width:60px;
+    }
+  }
+  .wrapper{
+    width:100%;
+    height:100%;
+  }
+  .handle{
+     position:absolute;
+     background-color: #fff;
+     cursor:pointer;
+   }
+}

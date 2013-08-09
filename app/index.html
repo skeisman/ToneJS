@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>ToneJS</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
+    <link rel="stylesheet" href="css/app.css"/>
+</head>
+<body>
+<div class="wrapper" id="tonejs" ng-controller="Main" style="visibility: hidden;">
+
+
+    <!--
+         Top Menu Bar
+    -->
+    <div class="menu-bar">
+        <a href="#/SongMenu/">File</a>
+        <a href="#/Help/">Help</a>
+
+        <div style="clear:both;"></div>
+    </div>
+
+
+    <!--
+        Playback and sequence controls
+    -->
+    <div class="playback" ng-controller="Playback">
+        <div class="sequence-border"></div>
+
+
+        <sequence-editor>
+            <div class="wrapper">
+                <div ng-repeat="s in appState.a.sequence"
+                     class="item cellWidth {{'c'+$index}}"
+                     ng-bind="s" ng-click="onSequenceClick()"></div>
+                <div class="editor cellWidth {{'c'+appState.ps.currentSequenceIndex}}">
+                    <div class="menu">
+                        <a ng-click="loop()">Loop</a>
+                        <a ng-click="add()">Add</a>
+                        <a ng-click="remove()">Remove</a>
+                        <a ng-click="clone()">Clone</a>
+                    </div>
+                    <select ng-model="appState.a.sequence[appState.ps.currentSequenceIndex]"
+                            ng-options="v for v in availablePatterns"></select>
+                </div>
+            </div>
+        </sequence-editor>
+
+        <a class="button-play-pause" ng-class="{paused:pl.isPlaying}" ng-click="togglePlay()"></a>
+
+        <div class="playback-properties">
+            <div class="property" style="width:40%;">
+                <input type="checkbox" ng-model="pl.isStereo"></input><label>Stereo</label>
+            </div>
+            <div class="property">
+                <select ng-model="appState.a.highlight1" ng-options="h for h in highlightValues"></select>
+                <label>Highlight I</label>
+            </div>
+            <div class="property" style="width:40%;">
+                <select ng-model="appState.a.bpm" ng-options="v for v in tempoValues"></select>
+                <label>BPM</label>
+            </div>
+            <div class="property">
+                <select ng-model="appState.a.highlight2" ng-options="h for h in highlightValues"></select>
+                <label>Highlight II</label>
+            </div>
+        </div>
+    </div>
+
+
+    <!--
+       Pattern Editor
+    -->
+    <div class="pattern" ng-controller="Pattern">
+        <div class="pattern-length-editor">
+            <label>Pattern Length:</label>
+
+            <div class="select-wrapper">
+                <select ng-model="patternLength" ng-options="l for l in patternLengths">
+                </select>
+            </div>
+        </div>
+
+
+        <div class="channel-labels">
+            <div class="wrapper" style="top:{{-1*scroll.scrollY}}px">
+                <a class="channel-label cellHeight"
+                   ng-class="{selected:appState.selection.lastChannel==$index}"
+                   href="#/ChannelMenu/{{$index}}"
+                   ng-repeat="channel in appState.a.channels">
+                    <div class="instrument">
+                        <div ng-bind="$index+' '+channel.source.name"></div>
+                    </div>
+                    <div class="vol">vol: {{channel.vol*100|number:0}}</div>
+                    <div class="pan">pan: {{channel.pan*100|number:0}}</div>
+                </a>
+                <!--
+                <a class="channel-label cellHeight add"
+                  href="#/ChannelMenu/add">+</a>
+                  -->
+            </div>
+        </div>
+
+
+        <div class="position-labels">
+            <div class="wrapper" style="left:{{-1*scroll.scrollX}}px">
+                <div class="label cellWidth cellHeight {{'c'+$index}}"
+                     ng-repeat="label in positionLabels"
+                     ng-class="{playhead:$index==appState.ps.currentRowIndex, highlight:$index%highlightIndex==0}"
+                     ng-bind="label">
+                </div>
+            </div>
+        </div>
+
+
+        <grid scroll="scroll" current-pattern="currentPattern">
+            <div class="content">
+                <div class="grid-background"></div>
+                <div class="playhead cellWidth c{{appState.ps.currentRowIndex}} "></div>
+                <div class="triggers"></div>
+                <trigger-selection-editor current-pattern="currentPattern" scroll="scroll">
+                    <div class="selection-menu">
+                        <a ng-show="single">Note<select ng-model="selectedTrigger.note"
+                                                        ng-options="n.value as n.text for n in notes"></select></a>
+                        <a ng-show="single">Volume<select ng-model="selectedTrigger.vol"
+                                                          ng-options="n.value as n.text for n in volumes"></select></a>
+                        <a ng-hide="single" href="#" ng-click="onLoopClick()">Play</a>
+                        <a href="#" ng-click="onCopyClick()">Copy</a>
+                        <a href="#" ng-click="onPasteClick()">Paste</a>
+                        <a href="#" ng-click="onDeleteClick()">Delete</a>
+
+                        <a ng-hide="single" href="#/AutoChord">Chord</a>
+                        <a ng-hide="single" href="#/PatternMenu">More</a>
+                    </div>
+                </trigger-selection-editor>
+            </div>
+        </grid>
+
+        <scrollbar class="h-scroll" scroll="scroll" direction="H"></scrollbar>
+        <scrollbar class="v-scroll" scroll="scroll" direction="V"></scrollbar>
+
+    </div>
+
+
+
+    <!--
+       Modal Menus
+    -->
+    <div class="modal-window" ng-controller="Modal" ng-show="showModal" style="display:none;">
+        <a href="#" class="modal-bkg"></a>
+
+        <div class="auto-center">
+            <ng-view></ng-view>
+        </div>
+    </div>
+</div>
+
+
+
+<!--
+    Splash Screen
+-->
+<div id="splash-screen" class="splash-screen">
+    <div class="bkg"></div>
+    <table>
+        <tr>
+            <td>
+                <div class="content">
+                    <div style="text-align: left;">
+                        <h1>ToneJS</h1>
+
+                        <h2>Music Composition Software (Turn on your Speakers)</h2>
+
+                        <p>If this is your first time here, you really should watch this short tutorial video before you
+                            get started.</p>
+                    </div>
+                    <div style="background-color:#DDD;padding:10px;margin-bottom: 10px;">
+                        <iframe width="480" height="360" src="//www.youtube.com/embed/8LiO0-t9PY4" frameborder="0"
+                                allowfullscreen></iframe>
+                    </div>
+
+                    <a href="#" id="success"
+                       style="display:none;background-color: #339933;padding:10px 4px;color:#FFF; text-align: center;font-weight:bold;width:50%;">Continue</a>
+
+                        <div id="fail" style="text-align: left;display:none;">
+                            <h3 style="color:#900;">Your browser is not able to use this software.</h3>
+
+                            <p>Try Chrome or Safari.</p>
+                        </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+</div>
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script src="lib/jqtouch-jquery.min.js"></script>
+<script src="lib/iscroll.js"></script>
+<script src="lib/angular/angular.js"></script>
+<script src="js/app.js"></script>
+<script src="js/bootstrap.js"></script>
+</body>
+</html>
